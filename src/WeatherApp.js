@@ -4,6 +4,7 @@ import './Weather.css';
 import WeatherInfo from './WeatherInfo';
 
 const WeatherApp = () => {
+    const flask_vercel = 'https://flask-weather-app-backend.vercel.app'
     const [weatherData, setWeatherData] = useState(null);
     const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
 
@@ -18,7 +19,7 @@ const WeatherApp = () => {
         const fetchWeatherData = async () => {
             if (location.latitude && location.longitude) {
                 try {
-                    const response = await axios.get("http://localhost:8080/weather", {
+                    const response = await axios.get(`${flask_vercel}/weather`, {
                         params: {
                             lat: location.latitude,
                             lon: location.longitude,
